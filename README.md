@@ -1,11 +1,7 @@
 # Drone-Shadow-Tracking
-Xiaoyan Zou, Ruofan Zhou, Majed El Helou, Sabine Süsstrunk  
-This is a python implemetation for the drone shadow tracking in videos.
+Xiaoyan Zou, Ruofan Zhou, [Majed El Helou](https://majedelhelou.github.io/) and Sabine Süsstrunk.
+This is a Python implemetation for the Drone Shadow Tracking [paper](https://infoscience.epfl.ch/record/265717/).
 
-## Citation
-```
-update this later
-```
 
 ## Codes
 ### Dependencies
