@@ -1,38 +1,63 @@
 # Drone-Shadow-Tracking
 Xiaoyan Zou, Ruofan Zhou, Majed El Helou, Sabine Süsstrunk  
+This is a python implemetation for the drone shadow tracking in videos.
 
 ## Citation
 ```
 update this later
 ```
 
-## Code
-requirement: python, opencv, matlab, photoshop
-The codes are tested on Ubuntu 16.04, matlab R2017b and python 3.6.5
+## Codes
+### Dependencies
+- Python 3.6.5
+- Opencv 3.4.3
+- MATLAB R2017b
 
-preparation:
-Please prepare files in order.
-1) The video
-
-2) The video frames.
-toFrames.py which will create a "VIDEO_NAME_frames" folder in the folder "data_frames" at root and put automatically video frames in the folder. The frames are used for shadow detection and the initial bounding box of the drone.
-   command in terminal: python toFrames.py -n VIDEO_NAME.mp4
-
-3) The ground truth image
-Take the first frame, and use PhotoShop to obtain a ground truth of the drone. Note that the background should be white and the drone's shadow should be black. Please name the ground truth image as video name and place it at root.
-eg. video_name = vid.mp4, ground truth img_name = vid.png
-
-4) The location of the initial bounding box of the drone.
-Apply the ground truth image to "box_location.py" to create the "VIDEO_NAME.txt" at root which represents the location of the initial bounding box of the drone.
-   command in terminal: python box_location.py -run.py -n VIDEO_NAME.IMAGE_FORMAT -o OUTPUT_FOLDER
-
-5) The shadow detection masks
-Open "create_shadow_mask.m" and modify frame_folder and masks_folder. And then run the codes to obtain the shadow detection masks.
+### Quick start (Demo)
+In `demo` folder, you can easily reproduce ths results reported in the paper by simply run the following command: 
+```
+python run.py -n VIDEO_NAME -o OUTPUT_FOLDER
+```
+*VIDEO_NAME* can be the following:
+1_simple.mp4, 2_bird.mp4, 3_comFace.mp4, 3_four.mp4, 4_newspaper.mp4, 5_bag.mp4, 5_grass.mp4, 5_people.mp4
 
 
-how to run the code:
+### How to run on your own video
+Note: all prepared files should be placed at root folder.
+
+#### Step 1: obtain video frames
+`toFrames.py` which will create video frames to the `VIDEO_NAME_frames` folder in `data_frames` folder at root. The video frames are used for shadow detection and the initial bounding box of the drone.
+```
+python toFrames.py -n VIDEO_NAME.mp4
+```
+
+#### Step 2: create shadow detection results
+Open `create_shadow_mask.m` and modify *frame_folder* and *masks_folder*. Then run it to obtain the shadow detection masks.
+
+
+#### Step 3: ground truth image (for the first frame)
+Take the first frame of the video, and use PhotoShop to obtain a ground truth of the drone shadow. Note that the background should set to white and the drone's shadow should set to black. Please name the ground truth image as video name and place it at root.
+- eg. video_name = vid.mp4  -->  ground truth img_name = vid.png
+
+
+#### Step 4: initial bounding box of the drone
+Apply the ground truth image to `box_location.py` to create the `VIDEO_NAME.txt` at root which represents the location of the initial bounding box of the drone.
+```
+python box_location.py -n VIDEO_NAME.IMAGE_FORMAT
+```
+
+
+#### Step 5: run tracking
 Having above files ready, we can run the main codes.
-  command in terminal: python run.py -n VIDEO_NAME.mp4 -o OUTPUT_FOLDER
+```
+python run.py -n VIDEO_NAME.mp4 -o OUTPUT_FOLDER
+```
+
+To save video and frames: 
+```
+python run.py -n VIDEO_NAME.VIDEO_FORMAT -o OUTPUT_FOLDER -sv true -sf true
+```
+
   To save video and frames: python run.py -n VIDEO_NAME.VIDEO_FORMAT -o OUTPUT_FOLDER -sv true -sf true
 
 
