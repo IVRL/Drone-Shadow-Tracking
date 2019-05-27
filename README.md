@@ -1,7 +1,7 @@
 # Drone Shadow Tracking
 Xiaoyan Zou, Ruofan Zhou, [Majed El Helou](https://majedelhelou.github.io/) and Sabine Süsstrunk.
 
-This is a Python implemetation for the Drone Shadow Tracking [paper](https://infoscience.epfl.ch/record/265717/).
+This is a Python implementation for the Drone Shadow Tracking [paper](https://infoscience.epfl.ch/record/265717/).
 
 
 ## Codes
